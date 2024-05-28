@@ -44,7 +44,21 @@ class Hasta:
         self.__tedavi = tedavi
 
     def tedavi_suresi_hesapla(self):
-        pass
+        hastalik_sureleri = {
+            "grip": 3,
+            "kalp hastalığı": 10,
+            "şeker hastalığı": 7,
+            "migren": 4
+        }
+        tedavi_ek_sureleri = {
+            "özel tedavi": 2,
+            "normal tedavi": 4
+        }
+
+        temel_sure = hastalik_sureleri.get(self.__hastalik.lower(), 0)
+        ek_sure = tedavi_ek_sureleri.get(self.__tedavi.lower(), 0)
+
+        return temel_sure + ek_sure
 
     def __str__(self):
-        return f"Hasta No: {self.__hasta_no}, Ad: {self.__ad}, Soyad: {self.__soyad}, Doğum Tarihi: {self.__dogum_tarihi}, Hastalık: {self.__hastalik}, Tedavi: {self.__tedavi}"
+        return f"Hasta No: {self.__hasta_no}, Ad: {self.__ad}, Soyad: {self.__soyad}, Doğum Tarihi: {self.__dogum_tarihi}, Hastalık: {self.__hastalik}, Tedavi: {self.__tedavi}, Tedavi Süresi: {self.tedavi_suresi_hesapla()} gün"
