@@ -59,6 +59,12 @@ def main():
         df = pd.DataFrame(data, columns=["Ad", "Soyad", "Departman", "Maaş", "Uzmanlık", "Deneyim Yılı", "Hastalık","Tedavi", "Doğum Tarihi"])
 
         df.fillna(0, inplace=True) # Boş değişkenleri 0 ile doldurma
+
+        doktor_uzmanlık = df[df["Uzmanlık"] != 0].groupby("Uzmanlık").size()
+        print("Doktorları uzmanlık alanlarına göre gruplandırma:\n", doktor_uzmanlık)
+
+        deneyimli_doktorlar = df[(df["Deneyim Yılı"] > 5)]
+        print("5 yıldan fazla deneyime sahip olan doktorlar:\n", deneyimli_doktorlar)
      
     except Exception:
         print("Bir hata oluştu")
