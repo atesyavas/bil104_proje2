@@ -1,3 +1,4 @@
+import pandas as pd
 from personel import Personel
 from doktor import Doktor
 from hemsire import Hemsire
@@ -54,5 +55,10 @@ def main():
             [hasta2.get_ad(), hasta2.get_soyad(), None, None, None, None, hasta2.get_hastalik(), hasta2.get_tedavi(), hasta2.get_dogum_tarihi()],
             [hasta3.get_ad(), hasta3.get_soyad(), None, None, None, None, hasta3.get_hastalik(), hasta3.get_tedavi(), hasta3.get_dogum_tarihi()],
         ]
+
+        df = pd.DataFrame(data, columns=["Ad", "Soyad", "Departman", "Maaş", "Uzmanlık", "Deneyim Yılı", "Hastalık","Tedavi", "Doğum Tarihi"])
+
+        df.fillna(0, inplace=True) # Boş değişkenleri 0 ile doldurma
+     
     except Exception:
         print("Bir hata oluştu")
