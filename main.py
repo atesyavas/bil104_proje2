@@ -65,6 +65,15 @@ def main():
 
         deneyimli_doktorlar = df[(df["Deneyim Yılı"] > 5)]
         print("5 yıldan fazla deneyime sahip olan doktorlar:\n", deneyimli_doktorlar)
+
+        hasta_df = df[df["Hastalık"] != 0]
+        hasta_df_sıralama = hasta_df.sort_values("Ad")
+        print("Hasta adına göre alfabetik sıralama:\n", hasta_df_sıralama)
+
+        maasi_yuksek_personel = df[(df["Maaş"] > 7000)]
+        print("Maaşı 7000 TL üzerinde olan personeller:\n", maasi_yuksek_personel)
      
     except Exception:
         print("Bir hata oluştu")
+
+
