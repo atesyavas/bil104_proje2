@@ -72,8 +72,20 @@ def main():
 
         maasi_yuksek_personel = df[(df["Maaş"] > 7000)]
         print("Maaşı 7000 TL üzerinde olan personeller:\n", maasi_yuksek_personel)
+
+        df['Doğum Tarihi'] = pd.to_datetime(df['Doğum Tarihi'], format='%d.%m.%Y', errors='coerce')
+
+        dogum_yili_filtresi = df[df['Doğum Tarihi'].dt.year >= 1990]
+        print("1990 ve sonrası doğumlu hastalar:\n", dogum_yili_filtresi)
+
+        yeni_df = df[
+            ["Ad", "Soyad", "Departman", "Maaş", "Uzmanlık", "Deneyim Yılı", "Hastalık", "Tedavi", "Doğum Tarihi"]]
+        print("Yeni DataFrame:\n", yeni_df)
      
     except Exception:
         print("Bir hata oluştu")
+
+if __name__ == "__main__":
+    main()
 
 
